@@ -1,7 +1,9 @@
 <!--
- * @Descripttion:
- * @version:
  * @Author: WuGuang
+ * @Date: 2022-07-27 15:40:12
+ * @Description:
+ *
+ * Copyright (c) 2022 by KYNY, All Rights Reserved.
 -->
 <template>
   <nav>
@@ -11,10 +13,24 @@
     <router-link to="/13">1-3</router-link>｜
     <router-link to="/131">1-3-1</router-link>｜
     <router-link to="/2">2</router-link>｜
+    <router-link to="/3">3</router-link>
   </nav>
   <router-view/>
 </template>
 
+<script setup>
+  import router from './router/index'
+  router.addRoute( {
+    name: '3', path: '/3', component: () => import('./views/three/index.vue'),
+    children: [
+      {
+        path: '',
+        name: '3-1',
+        component: () => import('./views/three/One.vue')
+      }
+    ]
+  })
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

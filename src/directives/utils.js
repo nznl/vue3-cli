@@ -1,9 +1,10 @@
 /*
- * @Descripttion:
- * @version:
  * @Author: WuGuang
+ * @Date: 2022-07-28 14:37:49
+ * @Description:
+ *
+ * Copyright (c) 2022 by KYNY, All Rights Reserved.
  */
-
 /**
  * @Description: 防止多次快速点击
  * @Author: WuGuang

@@ -1,7 +1,9 @@
 /*
- * @Descripttion:
- * @version:
  * @Author: WuGuang
+ * @Date: 2022-07-27 16:57:31
+ * @Description:
+ *
+ * Copyright (c) 2022 by KYNY, All Rights Reserved.
  */
 
 export const route = [
@@ -28,6 +30,10 @@ export const route = [
         component: () => import('../views/one/Two.vue'),
         meta: {
           title: '1-2'
+        },
+        beforeEnter: (to, from) => {
+          // ...
+          document.title = 'beforeEnter'
         }
       },
       {

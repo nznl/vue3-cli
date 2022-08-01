@@ -7,19 +7,27 @@
 -->
 
 <template>
-  第二层
+  <div v-if="isShowName">第二层</div>
+  123
   <el-input v-model="inputVal" @input="debounce(inputEvent($event), 1000)"></el-input>
   <input type="text" id="input" v-focus/>
+  <button @click="testshow">click</button>
 </template>
 
 <script setup>
-import { ref, reactive, toRefs, onMounted } from 'vue'
+import { ref, reactive, toRefs, onMounted,  } from 'vue'
+import { useRoute, onBeforeRouteUpdate, useRouter } from 'vue-router'
 let obj = {
   _val: 1,
   get val() {
     return this._val++
   }
 }
+const $route = useRoute();
+const $router = useRouter();
+const isShowName = ref(true);
+console.log(isShowName, 'isShowName')
+console.log($route.hash)
 const inputVal = ref(null);
 console.log(obj.val === 1 && obj.val === 2 && obj.val === 3);
 function debounce(fn, delay) {
@@ -47,8 +55,12 @@ const vFocus = {
   },
 } // setup模式，默认v开头的驼峰为构件指令
 
+onBeforeRouteUpdate((to, from) => {
+  console.log(to, '-----123');
+})
 onMounted(() => {
-    document.querySelector('#input').oninput = debounce(inputEvent(e), 500)
+  console.log(456, '---')
+    // document.querySelector('#input').oninput = debounce(inputEvent(e), 500)
 })
 
 async function thrrol(fn, delay) {
@@ -63,4 +75,44 @@ async function thrrol(fn, delay) {
   }
 }
 
+const arr = [4,3,2,];
+const arr_1 = [5,6,8]
+arr.forEach(item => {
+  try {
+      arr_1.forEach(item_1 => {
+    if (item_1 === 6) {
+      return
+    }
+     console.log(item_1);
+  })
+  if (item === 3) {
+    throw Error('终止')
+  }
+  console.log(item)
+  } catch {
+
+  }
+})
+console.log('=======')
+
+function test() {
+for(let i in arr) {
+  arr_1.forEach(item_1 => {
+    if (item_1 === 6) {
+      return
+    }
+    console.log(item_1);
+  })
+  if (arr[i] === 3) {
+    return
+  }
+  console.log(arr[i])
+}
+}
+test()
+async function testshow() {
+  const result = await $router.push('/3');
+  console.log(result, 'result');
+  isShowName.value = false;
+}
 </script>

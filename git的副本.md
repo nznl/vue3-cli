@@ -13,7 +13,7 @@
   git merge targetBranch (把targetBranch代码合并到当前所在分支)
 
 2.创建远程分支
-   git push origin newbranch:newbranch 
+   git push origin newbranch:newbranch (前者为本地分支名，后者为远程分支名)
 
 3.删除本地分支
   git branch - d branchName
