@@ -14,6 +14,6 @@ import router from '../router/index'
 router.addRoute({
   path: '/3',
   name: '3',
-  component: () => import('./three/One.vue')
+  component: () => import('./three/One.jsx')
 })
 </script>

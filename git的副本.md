@@ -29,3 +29,6 @@
 
 7. 修改错误commit
   git commit --amend --message='xxx'
+
+8. 第一次push到远程仓库
+  git push --set-upstream origin xxx

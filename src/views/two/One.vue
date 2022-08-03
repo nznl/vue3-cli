@@ -11,7 +11,7 @@
   123
   <el-input v-model="inputVal" @input="debounce(inputEvent($event), 1000)"></el-input>
   <input type="text" id="input" v-focus/>
-  <button @click="testshow">click</button>
+  <button @click="$utils.addNumer">click</button>
 </template>
 
 <script setup>
@@ -111,8 +111,8 @@ for(let i in arr) {
 }
 test()
 async function testshow() {
-  const result = await $router.push('/3');
-  console.log(result, 'result');
-  isShowName.value = false;
+  // const result = await $router.push('/3');
+  // console.log(result, 'result');
+  // isShowName.value = false;
 }
 </script>

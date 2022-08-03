@@ -13,22 +13,38 @@
     <router-link to="/13">1-3</router-link>｜
     <router-link to="/131">1-3-1</router-link>｜
     <router-link to="/2">2</router-link>｜
-    <router-link to="/3">3</router-link>
+    <router-link to="/3">3</router-link>|
+    <router-link to="/3/1">3-1</router-link>|
+    <router-link to="/3/2">3-2</router-link>|
+    <router-link to="/4">4</router-link>
   </nav>
   <router-view/>
 </template>
 
 <script setup>
   import router from './router/index'
-  router.addRoute( {
+  const routes = [{
     name: '3', path: '/3', component: () => import('./views/three/index.vue'),
     children: [
       {
-        path: '',
+        path: '1',
         name: '3-1',
-        component: () => import('./views/three/One.vue')
+        component: () => import('./views/three/One.jsx')
+      },
+      {
+        path: '2',
+        name: '3-2',
+        component: () => import('./views/three/two.vue')
       }
     ]
+  },
+  {
+    path: '/4',
+    name: '4',
+    component: () => import('./views/four/index.vue')
+  }]
+  routes.forEach(route => {
+    router.addRoute(route);
   })
 </script>
 <style lang="less">
